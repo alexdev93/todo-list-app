@@ -10,8 +10,6 @@ This is a simple Todo List application built with React and TypeScript. It allow
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Technologies Used](#technologies-used)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
