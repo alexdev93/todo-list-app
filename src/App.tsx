@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AddTodo from './components/AddTodo';
 import TodoList from './components/TodoList';
 import Todo from './types/Todo';
 
 const App: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([
-    { id: 1, text: 'Task 1', completed: false, category: 'Work' },
-    { id: 2, text: 'Task 2', completed: true, category: 'Personal' },
-  ]);
+
+    // Load tasks from localStorage on initial render
+    const initialTodos: Todo[] = JSON.parse(localStorage.getItem('todos') || '[]');
+    const [todos, setTodos] = useState<Todo[]>(initialTodos);
+  
+    useEffect(() => {
+      localStorage.setItem('todos', JSON.stringify(todos));
+    }, [todos]);
 
   const handleAddTodo = (text: string, category: string) => {
     const newTodo: Todo = {
