@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import Todo from '../types/Todo';
 
 interface TodoListProps {
@@ -8,10 +7,7 @@ interface TodoListProps {
 }
 
 const TodoList: React.FC<TodoListProps> = ({ todos, onToggleComplete, onDeleteTask }) => {
-  useEffect(() => {
-    // You can perform any additional logic here if needed
-  }, [todos]);
-
+ 
   const handleToggleComplete = (taskId: number) => {
     onToggleComplete(taskId);
   };
