@@ -49,13 +49,13 @@ npm start
 The app will be accessible at http://localhost:3000.
 
 ## Usage
-Add tasks using the "Add Task" form.
-Mark tasks as completed by checking the checkbox.
-Delete tasks by clicking the "Delete" button.
-Tasks are saved to LocalStorage and persist across page refreshes.
+- Add tasks using the "Add Task" form.
+- Mark tasks as completed by checking the checkbox.
+- Delete tasks by clicking the "Delete" button.
+- Tasks are saved to LocalStorage and persist across page refreshes.
 
 ## Technologies Used
-React
-TypeScript
-CSS (styles)
-LocalStorage (persistence)
+- React
+- TypeScript
+- CSS (styles)
+- LocalStorage (persistence)
