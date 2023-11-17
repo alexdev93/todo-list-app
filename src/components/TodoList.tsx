@@ -1,4 +1,3 @@
-// TodoList.tsx
 import React, { useEffect, useState } from 'react';
 import Todo from '../types/Todo';
 
@@ -8,10 +7,18 @@ interface TodoListProps {
 
 const TodoList: React.FC<TodoListProps> = ({ todos }) => {
   const [tasks, setTasks] = useState<Todo[]>(todos);
-
+  
   useEffect(() => {
-    setTasks(todos);
-  }, [todos]);
+    if(tasks[tasks.length-1].id !== todos[todos.length-1].id){
+        if (tasks.length < todos.length) {
+            setTasks((prevTasks) => {
+                const updatedTasks = [...prevTasks, todos[todos.length - 1]];
+                return updatedTasks;
+            });
+        }
+    }
+  }, [todos, tasks]);
+  
   
 const handleToggleComplete = (taskId: number) => {
     setTasks((prevTasks) =>
