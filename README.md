@@ -54,25 +54,8 @@ Mark tasks as completed by checking the checkbox.
 Delete tasks by clicking the "Delete" button.
 Tasks are saved to LocalStorage and persist across page refreshes.
 
-## Project Structure
-todo-list-app/
-|-- src/
-|   |-- components/
-|       |-- AddTodo.tsx
-|       |-- TodoList.tsx
-|-- types/
-|   |-- Todo.ts
-|-- App.tsx
-|-- index.tsx
-|-- ...
-|-- README.md
-|-- package.json
-|-- ...
-
 ## Technologies Used
 React
 TypeScript
 CSS (styles)
 LocalStorage (persistence)
-
-Remember to replace placeholder URLs, usernames, and other details with your actual project information. Feel free to add more sections or details based on the specific features and structure of your application.
