@@ -1,38 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Todo from '../types/Todo';
 
 interface TodoListProps {
   todos: Todo[];
+  onToggleComplete: (taskId: number) => void;
+  onDeleteTask: (taskId: number) => void;
 }
 
-const TodoList: React.FC<TodoListProps> = ({ todos }) => {
-  const [tasks, setTasks] = useState<Todo[]>(todos);
-  
+const TodoList: React.FC<TodoListProps> = ({ todos, onToggleComplete, onDeleteTask }) => {
   useEffect(() => {
-    const lastTodo = todos[todos.length - 1];
-    const isTodoInTasks = tasks.some((task) => task.id === lastTodo.id);
-  
-    if (!isTodoInTasks) {
-      setTasks((prevTasks) => [...prevTasks, lastTodo]);
-    }
-  }, [todos, tasks]);
-  
-const handleToggleComplete = (taskId: number) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === taskId ? { ...task, completed: !task.completed } : task
-      )
-    );
+    // You can perform any additional logic here if needed
+  }, [todos]);
+
+  const handleToggleComplete = (taskId: number) => {
+    onToggleComplete(taskId);
   };
 
-
   const handleDeleteTask = (taskId: number) => {
-    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+    onDeleteTask(taskId);
   };
 
   return (
     <div>
-      {tasks.map((task) => (
+      {todos.map((task) => (
         <div key={task.id} className="flex items-center">
           <input
             type="checkbox"
@@ -45,7 +35,7 @@ const handleToggleComplete = (taskId: number) => {
               marginLeft: '8px',
             }}
           >
-            {task.text}
+            {task.text} - Category: {task.category}
           </span>
           <button
             className="ml-2 p-1 text-red-500 bg-transparent border border-solid border-red-500 rounded"

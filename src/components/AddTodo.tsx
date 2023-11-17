@@ -1,41 +1,57 @@
-// AddTodo.tsx
-import React, { useEffect, useState } from 'react';
+// components/AddTodo.tsx
+import React, { useState } from 'react';
 
 interface AddTodoProps {
-  onAddTodo: (text: string) => void;
+  onAddTodo: (text: string, category: string) => void;
 }
 
 const AddTodo: React.FC<AddTodoProps> = ({ onAddTodo }) => {
-  const [newTodo, setNewTodo] = useState<string>('');
+  const [text, setText] = useState('');
+  const [category, setCategory] = useState('Work');
+  const [error, setError] = useState('');
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewTodo(event.target.value);
-  };
-
-  const handleAddTodo = (event: React.FormEvent) => {
-    event.preventDefault();
-    if (newTodo.trim() !== '') {
-      onAddTodo(newTodo.trim());
-      setNewTodo('');
+  const handleAddTodo = () => {
+    if (text.trim() !== '' && category.trim() !== '') {
+      onAddTodo(text, category);
+      setText('');
+      setCategory('Work');
+      setError(''); // Clear any previous errors
+    } else {
+      setError('Please enter a task and select a category.');
     }
   };
 
+  const categoryOptions = ['Work', 'Personal'];
+
   return (
-    <form onSubmit={handleAddTodo} className="mt-4">
-      <label htmlFor="newTodo" className="mr-2">
-        Add New Task:
-      </label>
+    <div className="mt-4">
       <input
         type="text"
-        id="newTodo"
-        value={newTodo}
-        onChange={handleInputChange}
-        className="mr-2 p-2 border border-gray-400 rounded"
+        placeholder="New task..."
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        className="mr-2 p-2 border border-gray-400"
       />
-      <button type="submit" className="p-2 bg-blue-500 text-white rounded">
-        Add
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        className="mr-2 p-2 border border-gray-400"
+      >
+        {categoryOptions.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+      <button
+        onClick={handleAddTodo}
+        className="p-2 bg-blue-500 text-white rounded"
+        disabled={!text.trim() || !category.trim()} // Disable button if text or category is empty
+      >
+        Add Task
       </button>
-    </form>
+      {error && <p className="text-red-500 mt-2">{error}</p>}
+    </div>
   );
 };
 
