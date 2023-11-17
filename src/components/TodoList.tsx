@@ -18,27 +18,18 @@ const TodoList: React.FC<TodoListProps> = ({ todos, onToggleComplete, onDeleteTa
 
   return (
     <div>
+      <h2>Task List</h2>
       {todos.map((task) => (
-        <div key={task.id} className="flex items-center">
-          <input
-            type="checkbox"
-            checked={task.completed}
-            onChange={() => handleToggleComplete(task.id)}
-          />
-          <span
-            style={{
-              textDecoration: task.completed ? 'line-through' : 'none',
-              marginLeft: '8px',
-            }}
-          >
-            {task.text} - Category: {task.category}
-          </span>
-          <button
-            className="ml-2 p-1 text-red-500 bg-transparent border border-solid border-red-500 rounded"
-            onClick={() => handleDeleteTask(task.id)}
-          >
-            Delete
-          </button>
+        <div key={task.id} className={`task ${task.completed ? 'completed' : ''}`}>
+          <input type="checkbox" checked={task.completed} onClick={()=>handleToggleComplete(task.id)} readOnly />
+          <div className="task-details">
+            <h3 className="task-name">{task.name}</h3>
+            <p className="task-description">{task.description}</p>
+            <div className="task-meta">
+              <p>Status: {task.completed ? 'Completed' : 'Incomplete'}</p>
+            </div>
+            <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
+          </div>
         </div>
       ))}
     </div>

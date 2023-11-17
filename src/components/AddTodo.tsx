@@ -1,21 +1,21 @@
-// components/AddTodo.tsx
 import React, { useState } from 'react';
 
 interface AddTodoProps {
-  onAddTodo: (text: string, category: string) => void;
+  onAddTodo: (name: string, description: string, category: string) => void;
 }
 
 const AddTodo: React.FC<AddTodoProps> = ({ onAddTodo }) => {
-  const [text, setText] = useState('');
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState('');
   const [category, setCategory] = useState('Work');
   const [error, setError] = useState('');
 
   const handleAddTodo = () => {
-    if (text.trim() !== '' && category.trim() !== '') {
-      onAddTodo(text, category);
-      setText('');
+    if (description.trim() !== '' && category.trim() !== '') {
+      onAddTodo(name ,description, category);
+      setDescription('');
       setCategory('Work');
-      setError(''); // Clear any previous errors
+      setError('');
     } else {
       setError('Please enter a task and select a category.');
     }
@@ -25,11 +25,17 @@ const AddTodo: React.FC<AddTodoProps> = ({ onAddTodo }) => {
 
   return (
     <div className="mt-4">
+      <input type="text" 
+      placeholder="Task name"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      className="mr-2 p-2 border border-gray-400"
+      />
       <input
         type="text"
         placeholder="New task..."
-        value={text}
-        onChange={(e) => setText(e.target.value)}
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
         className="mr-2 p-2 border border-gray-400"
       />
       <select
@@ -46,7 +52,7 @@ const AddTodo: React.FC<AddTodoProps> = ({ onAddTodo }) => {
       <button
         onClick={handleAddTodo}
         className="p-2 bg-blue-500 text-white rounded"
-        disabled={!text.trim() || !category.trim()} // Disable button if text or category is empty
+        disabled={!name.trim() || !description.trim() || !category.trim()} 
       >
         Add Task
       </button>
