@@ -9,16 +9,13 @@ const TodoList: React.FC<TodoListProps> = ({ todos }) => {
   const [tasks, setTasks] = useState<Todo[]>(todos);
   
   useEffect(() => {
-    if(tasks[tasks.length-1].id !== todos[todos.length-1].id){
-        if (tasks.length < todos.length) {
-            setTasks((prevTasks) => {
-                const updatedTasks = [...prevTasks, todos[todos.length - 1]];
-                return updatedTasks;
-            });
-        }
+    const lastTodo = todos[todos.length - 1];
+    const isTodoInTasks = tasks.some((task) => task.id === lastTodo.id);
+  
+    if (!isTodoInTasks) {
+      setTasks((prevTasks) => [...prevTasks, lastTodo]);
     }
   }, [todos, tasks]);
-  
   
 const handleToggleComplete = (taskId: number) => {
     setTasks((prevTasks) =>
