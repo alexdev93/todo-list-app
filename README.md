@@ -30,17 +30,17 @@ This is a simple Todo List application built with React and TypeScript. It allow
 
    ```bash
    git clone https://github.com/your-username/todo-list-app.git
-   ```bash
+ 
 
-  ```bash
+
    cd todo-list-app
-   ```bash
+  
 
-   ```bash
+ 
    yarn install
-   ```bash
+  
 
-   ```bash
+  
    yarn start
    ```bash
 
