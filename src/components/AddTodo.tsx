@@ -13,6 +13,7 @@ const AddTodo: React.FC<AddTodoProps> = ({ onAddTodo }) => {
   const handleAddTodo = () => {
     if (description.trim() !== '' && category.trim() !== '') {
       onAddTodo(name ,description, category);
+      setName('');
       setDescription('');
       setCategory('Work');
       setError('');
@@ -24,40 +25,42 @@ const AddTodo: React.FC<AddTodoProps> = ({ onAddTodo }) => {
   const categoryOptions = ['Work', 'Personal'];
 
   return (
-    <div className="mt-4">
+    <div className="add-todo">
+   
       <input type="text" 
+      id='task-name'
       placeholder="Task name"
       value={name}
       onChange={(e) => setName(e.target.value)}
-      className="mr-2 p-2 border border-gray-400"
       />
       <input
-        type="text"
+      type='text'
         placeholder="New task..."
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        className="mr-2 p-2 border border-gray-400"
+        className="row"
       />
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className="mr-2 p-2 border border-gray-400"
+        className="add-catagory"
       >
         {categoryOptions.map((option) => (
           <option key={option} value={option}>
             {option}
           </option>
         ))}
+          
       </select>
       <button
         onClick={handleAddTodo}
-        className="p-2 bg-blue-500 text-white rounded"
+        className="btn"
         disabled={!name.trim() || !description.trim() || !category.trim()} 
-      >
-        Add Task
+        >
+        +
       </button>
       {error && <p className="text-red-500 mt-2">{error}</p>}
-    </div>
+        </div>
   );
 };
 
