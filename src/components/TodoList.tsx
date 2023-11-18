@@ -17,43 +17,23 @@ const TodoList: React.FC<TodoListProps> = ({ todos, onToggleComplete, onDeleteTa
 
   return (
     <>
-<strong>Task List</strong>
-<ol>
+<h3>Task List</h3>
+<div className='task-list'>
 {todos.map(task => (
-  <li className='tasks' key={task.id}>
+  <div className='tasks' key={task.id}>
     <input className='check' type="checkbox" checked={task.completed} onClick={() => handleToggleComplete(task.id)} readOnly />
     <div className='task-info'>
-    <p>{task.name} : {task.category}</p>
+    <p className={task.completed ? 'completed' : ''}>{task.name} : {task.category}</p>
     <p>{task.description}</p>
     </div>
    <div className='del-btn'>
     <span onClick={() => handleDeleteTask(task.id)}>X</span>
     </div> 
-  </li>
+  </div>
   ))}
-</ol>
+</div>
 </>    
   );
 };
 
 export default TodoList;
-
-
-
-//   <div className='olcards'>
-//       {todos.map((task) => (
-//    <div key={task.id} className={`task ${task.completed ? 'completed' : ''}`}>
-//     <div className="content">
-//       <h3 className="title">{task.name}</h3>
-//       <p className="description">{task.description}</p>
-//       <div className="task-meta">
-//       <p>Category: {task.category}</p>
-//         <input type="checkbox" checked={task.completed} onClick={() => handleToggleComplete(task.id)} readOnly />
-//         <p>Status: {task.completed ? 'Completed' : 'Incomplete'}</p>
-//       </div>
-//       <button onClick={() => handleDeleteTask(task.id)}>Delete</button>
-//     </div>
-//   </div>
-// ))}
-
-//     </div>

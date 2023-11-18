@@ -6,8 +6,10 @@ import './App.css';
 
 const App: React.FC = () => {
 
-  
-    const initialTodos: Todo[] = JSON.parse(localStorage.getItem('todos') ?? `[]`);
+  // const customTodo: Todo[] = [{id: 1, name: "Task 1", description: "go somewhere", completed: false, category: "Work"},
+  // {id: 2, name: "Task 2", description: "meet somebody", completed: true, category: "Personal"}]
+
+    const initialTodos: Todo[] = JSON.parse(localStorage.getItem('todos') ?? "[]");
     const [todos, setTodos] = useState<Todo[]>(initialTodos);
   
     useEffect(() => {
@@ -40,6 +42,7 @@ const App: React.FC = () => {
   return (
     <div className='container'>
       <div className="todo-app">
+        <div>
       <h2>Todo List</h2>
       <AddTodo onAddTodo={handleAddTodo} />
       <TodoList
@@ -47,6 +50,7 @@ const App: React.FC = () => {
         onToggleComplete={handleToggleComplete}
         onDeleteTask={handleDeleteTask}
         />
+        </div>
         </div>
         </div>
   );
