@@ -7,7 +7,7 @@ interface AddTodoProps {
 const AddTodo: React.FC<AddTodoProps> = ({ onAddTodo }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('Work');
+  const [category, setCategory] = useState('');
   const [error, setError] = useState('');
 
   const handleAddTodo = () => {
@@ -35,10 +35,12 @@ const AddTodo: React.FC<AddTodoProps> = ({ onAddTodo }) => {
                 />
 
                 <select
+                placeholder="Category"
                 id='category'
         value={category}
         onChange={(e) => setCategory(e.target.value)}
       >
+        <option value="" disabled selected>Category</option>
         {categoryOptions.map((option) => (
           <option key={option} value={option}>
             {option}
