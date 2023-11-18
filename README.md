@@ -11,6 +11,7 @@ This is a simple Todo List application built with React and TypeScript. It allow
 - [Project Structure](#project-structure)
 - [Future Improvements](#future-improvements)
 - [Technologies Used](#technologies-used)
+- [Issues](#issues)
 
 ## Features
 
@@ -58,3 +59,7 @@ The app will be accessible at http://localhost:3000.
 - TypeScript
 - CSS (styles)
 - LocalStorage (persistence)
+
+## Issues
+- If you encounter any issues during usage, try reloading the page or restarting the app.
+
