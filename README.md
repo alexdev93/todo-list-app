@@ -9,6 +9,7 @@ This is a simple Todo List application built with React and TypeScript. It allow
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
+- [Future Improvements](#future-improvements)
 - [Technologies Used](#technologies-used)
 
 ## Features
@@ -29,21 +30,20 @@ This is a simple Todo List application built with React and TypeScript. It allow
 
    ```bash
    git clone https://github.com/your-username/todo-list-app.git
-Navigate to the project directory:
+   ```bash
 
-bash
-Copy code
-cd todo-list-app
-Install dependencies:
+  ```bash
+   cd todo-list-app
+   ```bash
 
-bash
-Copy code
-npm install
-Start the development server:
+   ```bash
+   yarn install
+   ```bash
 
-bash
-Copy code
-npm start
+   ```bash
+   yarn start
+   ```bash
+
 The app will be accessible at http://localhost:3000.
 
 ## Usage
@@ -51,6 +51,14 @@ The app will be accessible at http://localhost:3000.
 - Mark tasks as completed by checking the checkbox.
 - Delete tasks by clicking the "Delete" button.
 - Tasks are saved to LocalStorage and persist across page refreshes.
+
+## Future Improvements
+
+- Enhance the layout for smaller devices.
+- Implement device-specific optimizations for a better user experience on known devices.
+- Consider improving the design aesthetics to achieve a more luxurious feel. Note: Due to tight deadlines, the current design may not fully reflect intended aesthetics.
+- If encountering any issues with app usage, try reloading the page or restarting the app for a smoother experience.
+
 
 ## Technologies Used
 - React
