@@ -6,26 +6,33 @@ import './App.css';
 
 const App: React.FC = () => {
 
-  // const customTodo: Todo[] = [{id: 1, name: "Task 1", description: "go somewhere", completed: false, category: "Work"},
-  // {id: 2, name: "Task 2", description: "meet somebody", completed: true, category: "Personal"}]
-
-    const initialTodos: Todo[] = JSON.parse(localStorage.getItem('todos') ?? "[]");
+    const initialid = parseInt(JSON.parse(localStorage.getItem("id") ?? "1"));
+    const initialTodos: Todo[] = JSON.parse(
+      localStorage.getItem("todos") ?? "[]"
+    );
     const [todos, setTodos] = useState<Todo[]>(initialTodos);
-  
-    useEffect(() => {
-      localStorage.setItem('todos', JSON.stringify(todos));
-    }, [todos]);
+    let [id, setId] = useState(initialid);
 
-  const handleAddTodo = (name: string, description: string, category: string) => {
-    const newTodo: Todo = {
-      id: todos.length + 1,
-      name,
-      description,
-      completed: false,
-      category,
+    useEffect(() => {
+      localStorage.setItem("todos", JSON.stringify(todos));
+      localStorage.setItem("id", JSON.stringify(id));
+    }, [todos, id]);
+
+    const handleAddTodo = (
+      name: string,
+      description: string,
+      category: string
+    ) => {
+      const newTodo: Todo = {
+        id: id,
+        name,
+        description,
+        completed: false,
+        category,
+      };
+      setId((id) => id + 1);
+      setTodos((prevTodos) => [...prevTodos, newTodo]);
     };
-    setTodos((prevTodos) => [...prevTodos, newTodo]);
-  };
 
   const handleToggleComplete = (taskId: number) => {
     setTodos((prevTodos) =>
