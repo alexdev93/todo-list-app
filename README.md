@@ -38,7 +38,6 @@ This is a simple Todo List application built with React and TypeScript. It allow
    cd todo-list-app
    ```
 
-````
 ```bash
  yarn install
 ````
@@ -110,18 +109,18 @@ const handleAddTodo = (name: string, description: string, category: string) => {
 
 # Key Points:
 
-Initialization: I initialize the task ID (id) and the list of todos (todos) by retrieving their values from local storage. If these values are not present, default values are used (1 for ID and an empty array for todos).
+- Initialization: I initialize the task ID (id) and the list of todos (todos) by retrieving their values from local -storage. If these values are not present, default values are used (1 for ID and an empty array for todos).
 
-State Management: The id state is used to track the last used ID for task creation. The todos state maintains the list of tasks.
+- State Management: The id state is used to track the last used ID for task creation. The todos state maintains the list of tasks.
 
-Use of useEffect: I use the useEffect hook to update local storage whenever there is a change in the todos or id state. This ensures that the latest data is persisted.
+- Use of useEffect: I use the useEffect hook to update local storage whenever there is a change in the todos or id state. This ensures that the latest data is persisted.
 
-Generating Unique IDs: The handleAddTodo function generates a new unique ID for each task, ensuring that the IDs are sequential and unique. The new ID is then used for the newly created task.
+- Generating Unique IDs: The handleAddTodo function generates a new unique ID for each task, ensuring that the IDs are sequential and unique. The new ID is then used for the newly created task.
 
 # Benefits
 
-Consistency: This approach ensures consistent and unique IDs, even when tasks are added or deleted.
+- Consistency: This approach ensures consistent and unique IDs, even when tasks are added or deleted.
 
-Persistence: Task data and the last used ID are persistently stored in local storage, allowing the application to recover its state after a page refresh or reopening.
+- Persistence: Task data and the last used ID are persistently stored in local storage, allowing the application to recover its state after a page refresh or reopening.
 
-Improved Robustness: The use of local storage provides a reliable and simple mechanism for managing IDs, enhancing the overall robustness of the application.
+- Improved Robustness: The use of local storage provides a reliable and simple mechanism for managing IDs, enhancing the overall robustness of the application.
