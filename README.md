@@ -98,7 +98,7 @@ const handleAddTodo = (
   setId((id) => id + 1);
   setTodos((prevTodos) => [...prevTodos, newTodo]);
 };
-
+.
 Key Points:
 Initialization: I initialize the task ID (id) and the list of todos (todos) by retrieving their values from local storage. If these values are not present, default values are used (1 for ID and an empty array for todos).
 
